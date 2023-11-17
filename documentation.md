@@ -34,28 +34,30 @@ website. Move on to the next request/response documentation.
 ### Ask for a page that doesn't exist
 
 Request components:
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL:  /products-new
+- Headers: none
+- Body: none
 
 Response components:
-- Status code:
+- Status code: 404
 - Headers: 
-- Body:
+  - Content-Type: text/html
+- Body: 404 HTML page
 
 ### Ask for the products list page
 
 Request components:
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL:  /products
+- Headers:  none
+- Body: none
 
 Response components:
-- Status code: 
+- Status code: 200 
 - Headers:
-- Body: 
+  - Content-Type: text/html
+- Body: page with a full list of products
 
 ### Ask for the product detail page
 
@@ -70,28 +72,30 @@ Here's an example product on the server:
 | categories  | "beauty", "electronics"                                    |
 
 Request components:
-- Method:
-- URL: 
-- Headers: 
-- Body: 
+- Method: GET
+- URL:  /products/:productId
+- Headers:  none
+- Body:   none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers:
-- Body: 
+  - Content-Type: text/html
+- Body: detailed information on the product page selected
 
 ### Ask for the create new product page
 
 Request components:
-- Method:
-- URL:
-- Headers: 
-- Body: 
+- Method: GET
+- URL:  /products/new
+- Headers:  none
+- Body:   none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers: 
-- Body: 
+  - Content-Type: text/html
+- Body: page for adding a new product
 
 ### Submit a new product
 
@@ -117,58 +121,64 @@ Here are the categories on the server:
 in the network tab as "payload".
 
 Request components:
-- Method: 
-- URL: 
-- Headers: 
-- Body: 
+- Method: POST
+- URL:  /products
+- Headers:
+  - Content-Type: application/x-www-form-urlencoded
+- Body: form input name, description, price, and categories
 
 Response components:
-- Status code: 
+- Status code: 201
 - Headers:
-- Body: 
+  - Content-Type: text/html
+- Body: 302 redirect to the new product page once created
 
 ### Ask for the edit product page
 
 Request components:
-- Method: 
-- URL: 
-- Headers: 
-- Body: 
+- Method: GET
+- URL:  /products/:productId/edit
+- Headers: none
+- Body: none
 
 Response components:
-- Status code:
+- Status code:  200
 - Headers: 
-- Body:
+  - Content-Type: text/html
+- Body: edit page for the individual product
 
 ### Submit an edit for an existing product
 
 After successful submission, user should be looking at the product detail page.
 
 Request components:
-- Method:
-- URL:
+- Method: POST
+- URL:  /products/:productId
 - Headers: 
-- Body: 
+  - Content-Type: application/x-www-form-urlencoded
+- Body: All information for the changes of the product
 
 Response components:
-- Status code: 
-- Headers:
-- Body: 
+- Status code: 200
+- Headers: 
+  - Content-Type: text/html
+- Body: 302 redirect to the product page after successful submission
 
 ### Submit a delete for an existing product
 
 After successful submission, user should be looking at the products list page.
 
 Request components:
-- Method: 
-- URL:
-- Headers: 
-- Body: 
+- Method: POST
+- URL:  /products/:productId/delete
+- Headers: none
+- Body: none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers:
-- Body: 
+  - Content-Type: text/html
+- Body: 302 redirect to the products page after deleting the product
 
 ### Submit a new review for a product
 
@@ -184,83 +194,90 @@ Here's an example review on the server:
 | productId  | 1                      |
 
 Request components:
-- Method: 
-- URL: 
+- Method: POST
+- URL: /products/:productId/reviews
 - Headers:
-- Body:
+  - Content-Type: application/x-www-form-urlencoded
+- Body: comment and star rating added
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers: 
-- Body: 
+  - Content-Type: text/html
+- Body: 302 redirect to the product detail page
 
 ### Ask for the edit review page for a product
 
 Request components:
-- Method: 
-- URL: 
-- Headers: 
-- Body: 
+- Method: GET
+- URL: /reviews/:reviewId/edit
+- Headers: none
+- Body: none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers:
-- Body: 
+  - Content-Type: text/html
+- Body: The edit page for the specific review.
 
 ### Submit an edit for an existing review
 
 After successful submission, user should be looking at the product detail page.
 
 Request components:
-- Method: 
-- URL: 
-- Headers:
-- Body: 
+- Method: POST
+- URL: /reviews/:reviewId
+- Headers:  none
+- Body: none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers: 
-- Body:
+  - Content-Type: text/html
+- Body: 302 redirect to the product page that the specific review belongs to
 
 ### Submit a delete for an existing review
 
 After successful submission, user should be looking at the product detail page.
 
 Request components:
-- Method:
-- URL: 
-- Headers: 
-- Body: 
+- Method: POST
+- URL: /reviews/:reviewId/delete
+- Headers: none
+- Body: none
 
 Response components:
-- Status code: 
+- Status code: 200
 - Headers: 
-- Body: 
+  - Content-Type: text/html
+- Body: 302 redirect to the product detail page where the review used to be
 
 ### Ask for all the products in a particular category by tag of the category
 
 Request components:
-- Method: 
-- URL: 
-- Headers: 
-- Body: 
+- Method: GET
+- URL: /categories/:categoryName/products
+- Headers: none
+- Body: none
 
 Response components:
-- Status code: 
-- Headers:
-- Body: 
+- Status code: 200
+- Headers:  
+  - Content-Type: text/html
+- Body: full product page of the category name
 
 ### Ask for the best-selling product
 
 Look for clues in the HTML pages from the prior responses for what the route should be.
 
 Request components:
-- Method: 
-- URL: 
-- Headers: 
-- Body: 
+- Method: GET
+- URL: /products/best-selling
+- Headers: none
+- Body: none
 
 Response components:
-- Status code: 
-- Headers:
-- Body: 
+- Status code: 200
+- Headers: 
+  - Content-Type: text/html
+- Body: best selling products page
